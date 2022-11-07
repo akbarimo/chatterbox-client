@@ -1,32 +1,23 @@
-// This object houses all the friend _data_ for the app.
-// Treat it like a data structure - add methods to interact
-// with and manipulate the data.
+const Friends = {
 
-class Friends {
-  // TODO: Define how you want to store your list of friends.
-  constructor() {
-    this._data = new Set();
-  }
+  _storage: new Set(),
 
-  items() {
-    return [...this._data];
-  }
+  items: () => {
+    return [...Friends._storage];
+  },
 
-  isFriend(name) {
-    return this._data.has(name);
-  }
+  isFriend: (name) => {
+    return Friends._storage.has(name);
+  },
 
-  toggleStatus(name, callback = () => {}) {
-    if (this.isFriend(name)) {
-      this._data.delete(name);
+  toggleStatus: (name, callback = () => {}) => {
+    if (Friends.isFriend(name)) {
+      Friends._storage.delete(name);
       callback(false);
     } else {
-      this._data.add(name);
+      Friends._storage.add(name);
       callback(true);
     }
   }
 
-  // TODO: Define methods which allow you to add, toggle,
-  // and check the friendship status of other users.
-
-}
+};

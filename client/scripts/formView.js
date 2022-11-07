@@ -1,8 +1,4 @@
-// FormView is an object which houses all the message form functionality.
-// Consider the provided code and complete the functionality.
-// Apply what you learn here to other interactive views if necessary.
-
-var FormView = {
+const FormView = {
 
   $form: $('form'),
 
@@ -10,14 +6,9 @@ var FormView = {
     FormView.$form.on('submit', FormView.handleSubmit);
   },
 
-  handleSubmit: function(e) {
-    // Stop the browser from submitting the form
+  handleSubmit: (e) => {
     e.preventDefault();
-
-    // TODO: Currently, this is all handleSubmit does.
-    // Make this function actually send a message to the Parse API.
-
-    let message = {
+    const message = {
       username: App.username,
       roomname: RoomsView.$currentRoom || 'lobby',
       text: FormView.$form.find('#message').val()
@@ -25,12 +16,12 @@ var FormView = {
 
     Parse.create(message, (data) => {
       Object.assign(message, data);
-      Message.updateMessages(message);
+      messageList.updateMessages(message);
     });
   },
 
-  setStatus: function(active) {
-    var status = active ? 'true' : null;
+  setStatus: (active) => {
+    const status = active ? 'true' : null;
     FormView.$form.find('input[type=submit]').attr('disabled', status);
   }
 

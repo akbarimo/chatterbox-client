@@ -1,8 +1,4 @@
-// The Parse object represents your connection to outside world!
-// Or... just the Parse API. Populate this object with methods
-// which send requests to the RESTful Parse API.
-
-var Parse = {
+const Parse = {
 
   server: `https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/${window.CAMPUS}`,
 
